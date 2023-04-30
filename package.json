@@ -1,8 +1,8 @@
 {
   "name": "data-arithmatic",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Data Olympics - reversing strings and formatting dollars into strings like a champ.",
-  "main": "source/Data-Arithmatic.js",
+  "main": "source/DataArithmatic.js",
   "scripts": {
     "docker-dev-build-image": "docker build ./ -f Dockerfile_LUXURYCode -t retold/data-arithmatic:local",
     "docker-dev-run": "docker run -it -d --name data-arithmatic -p 12222:8080 -v \"$PWD/.config:/home/coder/.config\"  -v \"$PWD:/home/coder/data-arithmatic\" -u \"$(id -u):$(id -g)\" -e \"DOCKER_USER=$USER\" retold/data-arithmatic:local",
