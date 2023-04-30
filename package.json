@@ -1,6 +1,6 @@
 {
   "name": "data-arithmatic",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Data Olympics - reversing strings and formatting dollars into strings like a champ.",
   "main": "source/Data-Arithmatic.js",
   "scripts": {

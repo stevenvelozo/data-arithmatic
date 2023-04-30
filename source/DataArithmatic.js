@@ -39,7 +39,7 @@ class DataArithmatic
 	/*************************************************************************
 	 * String Manipulation and Comparison Functions
 	 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
-	
+
 	/**
 	 * Reverse a string
 	 *
@@ -179,9 +179,9 @@ class DataArithmatic
 	}
 
 	/**
-	 * 
-	 * @param {*} pString 
-	 * @returns 
+	 *
+	 * @param {*} pString
+	 * @returns
 	 */
 	cleanNonAlphaCharacters (pString)
 	{
@@ -191,11 +191,11 @@ class DataArithmatic
 	    }
 	}
 
-	
+
 	/*************************************************************************
 	 * Number Formatting Functions
 	 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
-	
+
 	/**
 	 * Insert commas every 3 characters from the right.  Used by formatterAddCommasToNumber().
 	 *
@@ -234,7 +234,7 @@ class DataArithmatic
 	        this.processAddCommasToNumberRegex.bind(this)
 	    );
 	}
-	
+
 	/**
 	 * This will take a number and format it as a dollar string.  It will also add commas to the number.  If the number is not a number, it will return '--'.
 	 *
@@ -291,10 +291,10 @@ class DataArithmatic
 	/*************************************************************************
 	 * String Tokenization Functions
 	 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
-	
+
 	/**
 	 * Return the string before the matched substring.
-	 * 
+	 *
 	 * If the substring is not found, the entire string is returned.  This only deals with the *first* match.
 	 *
 	 * @param {string} pString
@@ -308,11 +308,11 @@ class DataArithmatic
 
 	/**
 	 * Return the string after the matched substring.
-	 * 
+	 *
 	 * If the substring is not found, an empty string is returned.  This only deals with the *first* match.
-	 * 
-	 * @param {string} pString 
-	 * @param {string} pMatch 
+	 *
+	 * @param {string} pString
+	 * @param {string} pMatch
 	 * @returns {string}
 	 */
 	stringAfterMatch (pString, pMatch)
@@ -329,12 +329,12 @@ class DataArithmatic
 
 	/**
 	 * Count the number of enclosures in a string based on the start and end characters.
-	 * 
+	 *
 	 * If no start or end characters are specified, it will default to parentheses.  If the string is not a string, it will return 0.
-	 * 
-	 * @param {string} pString 
-	 * @param {string} pEnclosureStart 
-	 * @param {string} pEnclosureEnd 
+	 *
+	 * @param {string} pString
+	 * @param {string} pEnclosureStart
+	 * @param {string} pEnclosureEnd
 	 * @returns the count of full in the string
 	 */
 	stringCountEnclosures (pString, pEnclosureStart, pEnclosureEnd)
@@ -365,10 +365,10 @@ class DataArithmatic
 	    return tmpEnclosureCount;
 	}
 
-	
+
 	/**
 	 * Get the value of the enclosure at the specified index.
-	 * 
+	 *
 	 * If the index is not a number, it will default to 0.  If the string is not a string, it will return an empty string.  If the enclosure is not found, it will return an empty string.  If the enclosure
 	 *
 	 * @param {string} pString
@@ -417,7 +417,7 @@ class DataArithmatic
 
 				// Again, only count enclosures at depth 1, but still this parses both pairs of all of them.
 				if ((tmpEnclosureDepth == 0) &&
-					tmpMatchedEnclosureIndex && 
+					tmpMatchedEnclosureIndex &&
 					(tmpEnclosedValueEndIndex <= tmpEnclosedValueStartIndex))
 				{
 					tmpEnclosedValueEndIndex = i;
@@ -442,7 +442,7 @@ class DataArithmatic
 	    }
 	}
 
-	
+
 	/**
 	 * Remove an enclosure from a string based on the index of the enclosure.
 	 *
@@ -488,7 +488,7 @@ class DataArithmatic
 	            tmpEnclosureDepth--;
 
 				if ((tmpEnclosureDepth == 0) &&
-					tmpMatchedEnclosureIndex && 
+					tmpMatchedEnclosureIndex &&
 					(tmpEnclosureEndIndex <= tmpEnclosureStartIndex))
 				{
 					tmpEnclosureEndIndex = i;
