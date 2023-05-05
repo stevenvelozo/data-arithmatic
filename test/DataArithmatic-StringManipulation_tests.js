@@ -209,6 +209,46 @@ suite
 						return fTestComplete();
 					}
 				);
+				test
+				(
+					'Pad the beginning of a string',
+					(fTestComplete)=>
+					{
+						let _DataArithmatic = new libDataArithmatic();
+						// The usual use case (e.g. for zero padding dates)
+						Expect(_DataArithmatic.stringPadStart('9', 2, '0'))
+							.to.equal('09');
+						Expect(_DataArithmatic.stringPadStart('11', 2, '0'))
+							.to.equal('11');
+						// Try some longer paddings
+						Expect(_DataArithmatic.stringPadStart('8675309', 20, '0'))
+							.to.equal('00000000000008675309');
+						// Should not be destructive
+						Expect(_DataArithmatic.stringPadStart('8675309', 1, '0'))
+							.to.equal('8675309');
+						// Pad with a longer filler string with shifting data
+						Expect(_DataArithmatic.stringPadStart('ning', 20, 'aaaaw'))
+							.to.equal('aaaawaaaawaaaawaning');
+						// Table of contents?
+						Expect(_DataArithmatic.stringPadStart('Chapter 1', 20, '.'))
+							.to.equal('...........Chapter 1');
+
+						return fTestComplete();
+					}
+				);
+				test
+				(
+					'Pad the end of a string',
+					(fTestComplete)=>
+					{
+						let _DataArithmatic = new libDataArithmatic();
+						// The usual use case (e.g. for left justifying text in fixed-width scenarios)
+						Expect(_DataArithmatic.stringPadEnd('Bob', 10, ' '))
+							.to.equal('Bob       ');
+
+						return fTestComplete();
+					}
+				)
 			}
 		);
 	}

@@ -288,6 +288,61 @@ class DataArithmatic
 	}
 
 
+	/**
+	 * Generate a reapeating padding string to be appended before or after depending on 
+	 * which padding function it uses.
+	 *
+	 * @param {*} pString
+	 * @param {number} pTargetLength
+	 * @returns {string} pPadString
+	 */
+	stringGeneratePaddingString(pString, pTargetLength, pPadString)
+	{
+	    let tmpTargetLength = pTargetLength >> 0;
+	    let tmpPadString = String((typeof pPadString !== 'undefined' ? pPadString : ' '));
+	    if (pString.length > pTargetLength)
+	    {
+	    	// No padding string if the source string is already longer than the target length, return an empty string
+	        return '';
+	    }
+	    else
+	    {
+	        let tmpPadLength = pTargetLength - pString.length;
+	        if (tmpPadLength > pPadString.length)
+	        {
+	            pPadString += pPadString.repeat(tmpTargetLength / pPadString.length);
+	        }
+	        return pPadString.slice(0,tmpPadLength);
+	    }
+	}
+
+	/**
+	 * Pad the start of a string.
+	 *
+	 * @param {*} pString
+	 * @param {number} pTargetLength
+	 * @returns {string} pPadString
+	 */
+	stringPadStart = function(pString, pTargetLength, pPadString)
+	{
+	    let tmpString = pString.toString();
+        return this.stringGeneratePaddingString(tmpString, pTargetLength, pPadString) + tmpString;
+	}
+
+	/**
+	 * Pad the end of a string.
+	 *
+	 * @param {*} pString
+	 * @param {number} pTargetLength
+	 * @returns {string} pPadString
+	 */
+	stringPadEnd = function(pString, pTargetLength, pPadString)
+	{
+	    let tmpString = pString.toString();
+        return tmpString + this.stringGeneratePaddingString(tmpString, pTargetLength, pPadString);
+	}
+
+
 	/*************************************************************************
 	 * String Tokenization Functions
 	 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
