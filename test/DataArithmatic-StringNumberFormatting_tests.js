@@ -9,6 +9,8 @@
 var Chai = require("chai");
 var Expect = Chai.expect;
 
+const libFable = require('fable');
+const _Fable = new libFable();
 let libDataArithmatic = require('../source/DataArithmatic.js');
 
 suite
@@ -28,7 +30,7 @@ suite
 					'Test adding commas to a number',
 					(fTestComplete)=>
 					{
-						let _DataArithmatic = new libDataArithmatic();
+						let _DataArithmatic = new libDataArithmatic(_Fable);
 						Expect(_DataArithmatic
 							.formatterAddCommasToNumber(1000))
 							.to.equal('1,000');
@@ -52,7 +54,7 @@ suite
 					'Test formatting dollars',
 					(fTestComplete)=>
 					{
-						let _DataArithmatic = new libDataArithmatic();
+						let _DataArithmatic = new libDataArithmatic(_Fable);
 						Expect(_DataArithmatic
 							.formatterDollars(1000))
 							.to.equal('$1,000.00');
@@ -79,7 +81,7 @@ suite
 					'Test rounding numbers',
 					(fTestComplete)=>
 					{
-						let _DataArithmatic = new libDataArithmatic();
+						let _DataArithmatic = new libDataArithmatic(_Fable);
 						Expect(_DataArithmatic
 							.formatterRoundNumber(1000, 2))
 							.to.equal('1000.00');

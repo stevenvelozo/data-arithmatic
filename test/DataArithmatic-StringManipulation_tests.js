@@ -9,6 +9,8 @@
 var Chai = require("chai");
 var Expect = Chai.expect;
 
+const libFable = require('fable');
+const _Fable = new libFable();
 let libDataArithmatic = require('../source/DataArithmatic.js');
 
 suite
@@ -28,7 +30,7 @@ suite
 					'Reverse a String',
 					(fTestComplete)=>
 					{
-						let _DataArithmatic = new libDataArithmatic();
+						let _DataArithmatic = new libDataArithmatic(_Fable);
 						Expect(_DataArithmatic
 							.stringReverse('Dogs'))
 							.to.equal('sgoD');
@@ -43,7 +45,7 @@ suite
 					'Insecure String Hash',
 					(fTestComplete)=>
 					{
-						let _DataArithmatic = new libDataArithmatic();
+						let _DataArithmatic = new libDataArithmatic(_Fable);
 						Expect(_DataArithmatic
 							.insecureStringHash('Dogs'))
 							.to.equal('HSH2135767');
@@ -65,7 +67,7 @@ suite
 					'Clean wrapping characters from a valid enclosure.',
 					(fTestComplete)=>
 					{
-						let _DataArithmatic = new libDataArithmatic();
+						let _DataArithmatic = new libDataArithmatic(_Fable);
 						// Test the enclosure cleaning function
 						Expect(_DataArithmatic
 							.cleanEnclosureWrapCharacters('`', '`Dogs`'))
@@ -98,7 +100,7 @@ suite
 					'Test if a string starts with a given substring - Javascript Engine startsWith',
 					(fTestComplete)=>
 					{
-						let _DataArithmatic = new libDataArithmatic();
+						let _DataArithmatic = new libDataArithmatic(_Fable);
 						Expect(_DataArithmatic
 							.stringStartsWith('Dogs', 'Do'))
 							.to.equal(true);
@@ -119,7 +121,7 @@ suite
 					'Test if a string starts with a given substring - Internal startsWith',
 					(fTestComplete)=>
 					{
-						let _DataArithmatic = new libDataArithmatic();
+						let _DataArithmatic = new libDataArithmatic(_Fable);
 						_DataArithmatic._UseEngineStringStartsWith = false;
 						Expect(_DataArithmatic
 							.stringStartsWith('Dogs', 'Do'))
@@ -141,7 +143,7 @@ suite
 					'Test if a string ends with a given substring - Javascript Engine endsWith',
 					(fTestComplete)=>
 					{
-						let _DataArithmatic = new libDataArithmatic();
+						let _DataArithmatic = new libDataArithmatic(_Fable);
 						Expect(_DataArithmatic
 							.stringEndsWith('Dogs', 'gs'))
 							.to.equal(true);
@@ -162,7 +164,7 @@ suite
 					'Test if a string ends with a given substring - Internal endsWith',
 					(fTestComplete)=>
 					{
-						let _DataArithmatic = new libDataArithmatic();
+						let _DataArithmatic = new libDataArithmatic(_Fable);
 						_DataArithmatic._UseEngineStringEndsWith = false;
 						Expect(_DataArithmatic
 							.stringEndsWith('Dogs', 'gs'))
@@ -191,7 +193,7 @@ suite
 					'Test cleaning nonalpha characters from a string',
 					(fTestComplete)=>
 					{
-						let _DataArithmatic = new libDataArithmatic();
+						let _DataArithmatic = new libDataArithmatic(_Fable);
 						Expect(_DataArithmatic
 							.cleanNonAlphaCharacters('Dogs'))
 							.to.equal('Dogs');
@@ -214,7 +216,7 @@ suite
 					'Pad the beginning of a string',
 					(fTestComplete)=>
 					{
-						let _DataArithmatic = new libDataArithmatic();
+						let _DataArithmatic = new libDataArithmatic(_Fable);
 						// The usual use case (e.g. for zero padding dates)
 						Expect(_DataArithmatic.stringPadStart('9', 2, '0'))
 							.to.equal('09');
@@ -241,7 +243,7 @@ suite
 					'Pad the end of a string',
 					(fTestComplete)=>
 					{
-						let _DataArithmatic = new libDataArithmatic();
+						let _DataArithmatic = new libDataArithmatic(_Fable);
 						// The usual use case (e.g. for left justifying text in fixed-width scenarios)
 						Expect(_DataArithmatic.stringPadEnd('Bob', 10, ' '))
 							.to.equal('Bob       ');

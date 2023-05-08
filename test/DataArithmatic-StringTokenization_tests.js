@@ -9,6 +9,8 @@
 var Chai = require("chai");
 var Expect = Chai.expect;
 
+const libFable = require('fable');
+const _Fable = new libFable();
 let libDataArithmatic = require('../source/DataArithmatic.js');
 
 suite
@@ -28,7 +30,7 @@ suite
 					'Test getting a string before a match',
 					(fTestComplete)=>
 					{
-						let _DataArithmatic = new libDataArithmatic();
+						let _DataArithmatic = new libDataArithmatic(_Fable);
 						Expect(_DataArithmatic
 							.stringBeforeMatch('Dogs are cool', 'are'))
 							.to.equal('Dogs ');
@@ -46,7 +48,7 @@ suite
 					'Test getting a string after a match',
 					(fTestComplete)=>
 					{
-						let _DataArithmatic = new libDataArithmatic();
+						let _DataArithmatic = new libDataArithmatic(_Fable);
 						Expect(_DataArithmatic
 							.stringAfterMatch('Dogs are cool', 'are'))
 							.to.equal(' cool');
@@ -64,7 +66,7 @@ suite
 					'Test counting enclosures',
 					(fTestComplete)=>
 					{
-						let _DataArithmatic = new libDataArithmatic();
+						let _DataArithmatic = new libDataArithmatic(_Fable);
 						Expect(_DataArithmatic
 							.stringCountEnclosures('Dogs (are) cool'))
 							.to.equal(1);
@@ -96,7 +98,7 @@ suite
 					'Test getting an enclosure value by index',
 					(fTestComplete)=>
 					{
-						let _DataArithmatic = new libDataArithmatic();
+						let _DataArithmatic = new libDataArithmatic(_Fable);
 						Expect(_DataArithmatic
 							.stringGetEnclosureValueByIndex('Dogs (are) cool', 0))
 							.to.equal('are');
@@ -130,7 +132,7 @@ suite
 					'Test removing an enclosure',
 					(fTestComplete)=>
 					{
-						let _DataArithmatic = new libDataArithmatic();
+						let _DataArithmatic = new libDataArithmatic(_Fable);
 						Expect(_DataArithmatic
 							.stringRemoveEnclosureByIndex('Dogs (are) cool', 0))
 							.to.equal('Dogs  cool');

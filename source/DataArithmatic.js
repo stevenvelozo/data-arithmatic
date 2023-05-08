@@ -2,7 +2,7 @@
 * @license MIT
 */
 
-const libFableServiceProviderBase = require('fable-serviceproviderbase').CoreServiceProviderBase;0
+const libFableServiceProviderBase = require('fable-serviceproviderbase');
 /**
 * Data Arithmatic
 *
