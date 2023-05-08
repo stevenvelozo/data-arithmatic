@@ -9,7 +9,9 @@
 var Chai = require("chai");
 var Expect = Chai.expect;
 
-let libDataArithmatic = require('../source/DataArithmatic.js');
+const libFable = require('fable');
+const _Fable = new libFable();
+const libDataArithmatic = require('../source/DataArithmatic.js');
 
 suite
 (
@@ -28,7 +30,7 @@ suite
 					'The class should initialize itself into a happy little object.',
 					(fTestComplete)=>
 					{
-						let _DataArithmatic = new libDataArithmatic();
+						let _DataArithmatic = new libDataArithmatic(_Fable);
 						Expect(_DataArithmatic)
 							.to.be.an('object', 'DataArithmatic should initialize as an object with no parameters.');
 						fTestComplete();

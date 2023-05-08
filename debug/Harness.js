@@ -1,6 +1,8 @@
+const libFable = require('fable');
 const libDataArithmatic = require('../source/DataArithmatic.js');
 
-let _DataArithmatic = new libDataArithmatic();
+let _Fable = new libFable();
+let _DataArithmatic = new libDataArithmatic(_Fable);
 
 // The insecureStringHash function generates stable hashes based on a passed-in string
 // You can define a custom prefix string, but it defaults to HSH

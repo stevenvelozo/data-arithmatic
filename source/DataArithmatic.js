@@ -1,17 +1,21 @@
 /**
 * @license MIT
-* @author <steven@velozo.com>
 */
 
+const libFableServiceProviderBase = require('fable-serviceproviderbase').CoreServiceProviderBase;0
 /**
 * Data Arithmatic
 *
 * @class DataArithmatic
 */
-class DataArithmatic
+class DataArithmatic extends libFableServiceProviderBase
 {
-	constructor()
+	constructor(pFable, pOptions, pServiceHash)
 	{
+		super(pFable, pOptions, pServiceHash)
+
+		this.serviceType = 'DataArithmatic';
+
 		// Regular Expressions (so they don't have to be recompiled every time)
 		// These could be defined as static, but I'm not sure if that will work with browserify ... and specifically the QT browser.
 		this._Regex_formatterInsertCommas = /.{1,3}/g;

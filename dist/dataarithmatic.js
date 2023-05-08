@@ -46,6 +46,59 @@
   }()({
     1: [function (require, module, exports) {
       /**
+      * Fable Core Pre-initialization Service Base
+      *
+      * For a couple services, we need to be able to instantiate them before the Fable object is fully initialized.
+      * This is a base class for those services.
+      *
+      * @license MIT
+      * @author <steven@velozo.com>
+      */
+
+      class FableCoreServiceProviderBase {
+        constructor(pOptions, pServiceHash) {
+          this.fable = false;
+          this.options = typeof pOptions === 'object' ? pOptions : {};
+          this.serviceType = 'Unknown';
+
+          // The hash will be a non-standard UUID ... the UUID service uses this base class!
+          this.UUID = `CORESVC-${Math.floor(Math.random() * (99999 - 10000) + 10000)}`;
+          this.Hash = typeof pServiceHash === 'string' ? pServiceHash : `${this.UUID}`;
+        }
+        static isFableService = true;
+
+        // After fable is initialized, it would be expected to be wired in as a normal service.
+        connectFable(pFable) {
+          this.fable = pFable;
+          return true;
+        }
+      }
+      module.exports = FableCoreServiceProviderBase;
+    }, {}],
+    2: [function (require, module, exports) {
+      /**
+      * Fable Service Base
+      * @license MIT
+      * @author <steven@velozo.com>
+      */
+
+      class FableServiceProviderBase {
+        constructor(pFable, pOptions, pServiceHash) {
+          this.fable = pFable;
+          this.options = typeof pOptions === 'object' ? pOptions : {};
+          this.serviceType = 'Unknown';
+          this.UUID = pFable.getUUID();
+          this.Hash = typeof pServiceHash === 'string' ? pServiceHash : `${this.UUID}`;
+        }
+        static isFableService = true;
+      }
+      module.exports = FableServiceProviderBase;
+      module.exports.CoreServiceProviderBase = require('./Fable-ServiceProviderBase-Preinit.js');
+    }, {
+      "./Fable-ServiceProviderBase-Preinit.js": 1
+    }],
+    3: [function (require, module, exports) {
+      /**
       * @license MIT
       * @author <steven@velozo.com>
       */
@@ -59,21 +112,25 @@
       if (typeof window === 'object') window.DataArithmatic = libDataArithmatic;
       module.exports = libDataArithmatic;
     }, {
-      "./DataArithmatic.js": 2
+      "./DataArithmatic.js": 4
     }],
-    2: [function (require, module, exports) {
+    4: [function (require, module, exports) {
       /**
       * @license MIT
-      * @author <steven@velozo.com>
       */
 
+      const libFableServiceProviderBase = require('fable-serviceproviderbase').CoreServiceProviderBase;
+      0;
       /**
       * Data Arithmatic
       *
       * @class DataArithmatic
       */
-      class DataArithmatic {
-        constructor() {
+      class DataArithmatic extends libFableServiceProviderBase {
+        constructor(pFable, pOptions, pServiceHash) {
+          super(pFable, pOptions, pServiceHash);
+          this.serviceType = 'DataArithmatic';
+
           // Regular Expressions (so they don't have to be recompiled every time)
           // These could be defined as static, but I'm not sure if that will work with browserify ... and specifically the QT browser.
           this._Regex_formatterInsertCommas = /.{1,3}/g;
@@ -525,6 +582,8 @@
         }
       }
       module.exports = DataArithmatic;
-    }, {}]
-  }, {}, [1])(1);
+    }, {
+      "fable-serviceproviderbase": 2
+    }]
+  }, {}, [3])(3);
 });
